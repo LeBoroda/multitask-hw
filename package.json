@@ -9,6 +9,13 @@
     "lint:fix": "prettier --write . && eslint . --fix",
     "prepare": "husky"
   },
+  "lint-staged": {
+    "*.{css,js,html,yml,md}": "npm run lint:fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeBoroda/multitask-hw.git"
+  },
   "private": true,
   "keywords": [],
   "author": "",
@@ -29,9 +36,5 @@
     "husky": "^9.1.7",
     "jest": "^30.2.0",
     "prettier": "^3.6.2"
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{css,md,yml,html}": "prettier --write"
   }
 }
