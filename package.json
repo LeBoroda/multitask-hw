@@ -2,7 +2,7 @@
   "name": "multitask-hw",
   "version": "1.0.0",
   "description": "",
-  "main": "index.mjs",
+  "main": "src/index.mjs",
   "scripts": {
     "test": "jest",
     "lint": "prettier --check . && eslint .",
