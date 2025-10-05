@@ -1,1 +1,3 @@
-console.log("Happy developing ✨");
+import {greetAlice} from "./myBind.js";
+
+console.log(greetAlice("!"));

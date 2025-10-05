@@ -10,6 +10,9 @@ describe("Polyfill custom bind tests", () => {
     });
   });
   describe("Function tests", () => {
+    it("should return function", () => {
+      expect(greet.myBind({}, "")).toBeInstanceOf(Function);
+    });
     it("should greet Indigo Montoya with context (myBind)", () => {
       const person = { name: "Indigo Montoya" };
       const greetAlice = greet.myBind(person, "Hello");
