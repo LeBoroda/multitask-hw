@@ -12,4 +12,4 @@ Function.prototype.myBind = function (context, ...rest) {
 const person = { name: "Алиса" };
 const greetAlice = greet.myBind(person, "Привет");
 
-console.log(greetAlice("!")); // Ожидаемый результат: "Привет, Алиса!"
+console.log(greetAlice("!"));
