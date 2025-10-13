@@ -1,7 +1,7 @@
-export function promisify(cb) {
+export function promisify(functionWithCb) {
   return function (...args) {
     return new Promise((resolve, reject) => {
-      cb(...args, (error, result) => {
+      functionWithCb(...args, (error, result) => {
         if (error) {
           reject(error);
         } else {
