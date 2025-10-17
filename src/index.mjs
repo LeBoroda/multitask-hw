@@ -5,6 +5,7 @@ import { curry, sum2, sum4 } from "./curry.js";
 import { promisify } from "./promisify.js";
 import { Parallel } from "./parallel.js";
 import { fetchRetry } from "./fetchRetry.js";
+import {debounce} from "./debounce.js";
 
 console.log(greetAlice("!"));
 
@@ -55,3 +56,10 @@ fetchRetry("https://dummyjson.com/products", 3, 1000)
   .then((response) => response.json())
   .then((data) => console.log(data))
   .catch((error) => console.error("Ошибка после всех попыток:", error));
+
+function onInput(event) {
+  console.log("Запрос к серверу:", event.target.value);
+}
+const debouncedOnInput = debounce(onInput, 500);
+let inputElement = document.querySelector('input');
+inputElement.addEventListener("input", debouncedOnInput);
