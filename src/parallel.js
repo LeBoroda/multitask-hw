@@ -18,25 +18,28 @@ export class Parallel {
       return Promise.resolve().then(() => cb([]));
     }
 
-    const runNext = () => {
-      while (running < threadsLimit && jobIndex < jobs.length) {
-        const currentIndex = jobIndex++;
-        const currentJob = jobs[currentIndex];
-        running++;
+    return new Promise((resolve) => {
+      const runNext = () => {
+        while (running < threadsLimit && jobIndex < jobs.length) {
+          const currentIndex = jobIndex++;
+          const currentJob = jobs[currentIndex];
+          running++;
 
-        currentJob((result) => {
-          results[currentIndex] = result;
-          running--;
-          completed++;
+          currentJob((result) => {
+            results[currentIndex] = result;
+            running--;
+            completed++;
 
-          if (completed === jobs.length) {
-            cb(results);
-          } else {
-            runNext();
-          }
-        });
-      }
-    };
-    runNext();
+            if (completed === jobs.length) {
+              cb(results);
+              resolve(results);
+            } else {
+              runNext();
+            }
+          });
+        }
+      };
+      runNext();
+    });
   }
 }
