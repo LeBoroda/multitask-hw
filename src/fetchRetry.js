@@ -1,10 +1,6 @@
 export async function fetchRetry(url, retries, delay) {
   try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("Http error");
-    }
-    return response;
+    return await fetch(url);
   } catch (err) {
     if (!retries) {
       throw err;

@@ -5,7 +5,7 @@ import { curry, sum2, sum4 } from "./curry.js";
 import { promisify } from "./promisify.js";
 import { Parallel } from "./parallel.js";
 import { fetchRetry } from "./fetchRetry.js";
-import {debounce} from "./debounce.js";
+import { debounce } from "./debounce.js";
 
 console.log(greetAlice("!"));
 
@@ -61,5 +61,5 @@ function onInput(event) {
   console.log("Запрос к серверу:", event.target.value);
 }
 const debouncedOnInput = debounce(onInput, 500);
-let inputElement = document.querySelector('input');
+let inputElement = document.querySelector("input");
 inputElement.addEventListener("input", debouncedOnInput);
