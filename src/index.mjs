@@ -6,7 +6,7 @@ import { promisify } from "./promisify.js";
 import { Parallel } from "./parallel.js";
 import { fetchRetry } from "./fetchRetry.js";
 import { debounce } from "./debounce.js";
-import {serialProcess} from "./serialProcess.js";
+import { serialProcess } from "./serialProcess.js";
 
 console.log(greetAlice("!"));
 
