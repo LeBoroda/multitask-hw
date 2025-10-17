@@ -3,6 +3,7 @@ import { User } from "./chainUser.js";
 import { ForceConstructor } from "./forcedUser.js";
 import { curry, sum2, sum4 } from "./curry.js";
 import { promisify } from "./promisify.js";
+import { Parallel } from "./parallel.js";
 
 console.log(greetAlice("!"));
 
@@ -38,3 +39,13 @@ const promisifiedSum = promisify(sum);
 promisifiedSum(2, 3)
   .then((result) => console.log(result))
   .catch((err) => console.log(err));
+
+const runner = new Parallel(2);
+
+runner
+  .job((done) => setTimeout(() => done("A"), 3000))
+  .job((done) => setTimeout(() => done("B"), 2000))
+  .job((done) => setTimeout(() => done("C"), 1000))
+  .done((results) => {
+    console.log(results); // ['A', 'B', 'C']
+  });
