@@ -6,6 +6,7 @@ import { promisify } from "./promisify.js";
 import { Parallel } from "./parallel.js";
 import { fetchRetry } from "./fetchRetry.js";
 import { debounce } from "./debounce.js";
+import {serialProcess} from "./serialProcess.js";
 
 console.log(greetAlice("!"));
 
@@ -63,3 +64,11 @@ function onInput(event) {
 const debouncedOnInput = debounce(onInput, 500);
 let inputElement = document.querySelector("input");
 inputElement.addEventListener("input", debouncedOnInput);
+
+serialProcess([1, 2, 3, 4, 5], (el, index, list, done) => {
+  console.log(`${el} start`);
+  setTimeout(() => {
+    console.log(`${el} end`);
+    done(el * el);
+  }, el * 100);
+}).then((list) => console.log(list)); // [1, 4, 9, 16, 25]
