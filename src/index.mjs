@@ -4,6 +4,7 @@ import { ForceConstructor } from "./forcedUser.js";
 import { curry, sum2, sum4 } from "./curry.js";
 import { promisify } from "./promisify.js";
 import { Parallel } from "./parallel.js";
+import {fetchRetry} from "./fetchRetry.js";
 
 console.log(greetAlice("!"));
 
@@ -49,3 +50,8 @@ runner
   .done((results) => {
     console.log(results); // ['A', 'B', 'C']
   });
+
+fetchRetry("https://dummyjson.com/products", 3, 1000)
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error("Ошибка после всех попыток:", error));
