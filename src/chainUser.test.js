@@ -36,6 +36,7 @@ describe("Test user chain constructor", () => {
   describe("Test User functions", () => {
     describe("Ask name", () => {
       it("should show prompt with name request", () => {
+        promptSpy.mockReturnValue("Toto");
         user.askName();
         expect(promptSpy).toHaveBeenCalledWith("What is your name?");
       });
@@ -52,6 +53,7 @@ describe("Test user chain constructor", () => {
     });
     describe("Ask age", () => {
       it("askAge should show prompt with age request", () => {
+        promptSpy.mockReturnValue("13");
         user.askAge();
         expect(promptSpy).toHaveBeenCalledWith("What is your age?");
       });
